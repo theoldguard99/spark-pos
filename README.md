@@ -1,73 +1,91 @@
-# React + TypeScript + Vite
+# SPARK POS Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A web-based Point of Sale dashboard for small and growing businesses.
 
-Currently, two official plugins are available:
+SPARK includes order management, product inventory, coupons, reports, employee management, and role-based access controls, built with React, TypeScript, Vite, and Supabase.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
 
-## React Compiler
+- React 19 + TypeScript
+- Vite 5
+- Tailwind CSS 4
+- TanStack Query
+- Supabase (Auth, Database, Storage, Edge Functions)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the ESLint configuration
+- Dashboard with sales and operational insights
+- POS order flow (cash, card, GCash support flow)
+- Product and inventory management
+- Coupon management with usage/expiry rules
+- Reports and transaction logs
+- Employee management
+- Store Access Directory for role- and user-level permissions
+- Reusable UI primitives (`Table`, `Button`, `Modal`, `Snackbar`, `SegmentedControl`)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js 18+ (recommended 20+)
+- npm 9+
+- Supabase project (for full functionality)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Getting Started
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. Install dependencies:
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Create `.env` in project root:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```env
+VITE_SUPABASE_URL=https://your-project-ref.supabase.co
+VITE_SUPABASE_ANON_KEY=your-anon-key
 ```
+
+3. Start development server:
+
+```bash
+npm run dev
+```
+
+4. Open app:
+
+- Default Vite URL: `http://localhost:5173`
+
+## Available Scripts
+
+- `npm run dev` - Start local dev server
+- `npm run build` - Type-check and build for production
+- `npm run preview` - Preview production build locally
+- `npm run lint` - Run ESLint
+- `npm run supabase` - Run Supabase CLI
+
+## Environment Notes
+
+- If Supabase variables are missing, the app runs in limited/demo mode in some screens.
+- Ensure redirect URLs are configured in Supabase Auth for email and OAuth flows.
+
+## Deployment
+
+Build the app:
+
+```bash
+npm run build
+```
+
+Deploy the generated `dist/` folder to your hosting provider (Netlify, Vercel, static hosting, etc.).
+
+## Project Structure (high level)
+
+- `src/pages` - Route screens
+- `src/components` - Reusable and feature UI components
+- `src/context` - App-level providers (auth, toast/snackbar)
+- `src/hooks` - Custom hooks (including access directory logic)
+- `src/lib` - Shared clients/config (Supabase)
+- `supabase` - SQL migrations and Edge Functions
+
+## License
+
+Choose your preferred license (commonly MIT for open source).
