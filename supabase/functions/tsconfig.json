@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "baseUrl": "../..",
+    "types": []
+  },
+  "include": ["**/*.ts", "esm-sh.d.ts"]
+}
