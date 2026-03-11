@@ -88,4 +88,4 @@ Deploy the generated `dist/` folder to your hosting provider (Netlify, Vercel, s
 
 ## License
 
-Choose your preferred license (commonly MIT for open source).
+This project is licensed under the MIT License. See `LICENSE` for details.
