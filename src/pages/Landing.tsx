@@ -62,6 +62,10 @@ const faqs = [
   },
 ]
 
+const annualBasePrice = 1188
+const annualDiscountRate = 0.1
+const annualDiscountedPrice = annualBasePrice * (1 - annualDiscountRate)
+
 export default function Landing() {
   const navigate = useNavigate()
   const { session } = useAuth()
@@ -90,6 +94,37 @@ export default function Landing() {
           <button onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })} className="text-slate-600 hover:text-slate-900">
             Pricing
           </button>
+          <div className="relative group">
+            <button className="text-slate-600 hover:text-slate-900">Subscription</button>
+            <div className="pointer-events-none absolute left-1/2 top-full z-20 mt-3 w-[32rem] -translate-x-1/2 rounded-2xl border border-slate-200 bg-white p-4 opacity-0 shadow-xl transition-all duration-150 group-hover:pointer-events-auto group-hover:opacity-100">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                <div className="rounded-xl border border-indigo-200 bg-indigo-50 p-4">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-indigo-700">Monthly Plan</p>
+                  <h3 className="mt-1 text-sm font-semibold text-slate-900">Monthly Subscription</h3>
+                  <p className="mt-2 text-2xl font-extrabold text-slate-900">
+                    ₱99
+                    <span className="ml-1 text-sm font-medium text-slate-500">/month</span>
+                  </p>
+                  <p className="mt-2 text-xs font-medium text-indigo-700">PHP Pesos Offer</p>
+                </div>
+
+                <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-4">
+                  <div className="flex items-center justify-between gap-2">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-emerald-700">Premium Annual</p>
+                    <span className="rounded-full bg-emerald-600 px-2 py-0.5 text-[10px] font-bold text-white">10% OFF</span>
+                  </div>
+                  <h3 className="mt-1 text-sm font-semibold text-slate-900">Premium Annual Subscription</h3>
+                  <p className="mt-2 flex items-end gap-2">
+                    <span className="text-2xl font-extrabold text-slate-900">₱{annualDiscountedPrice.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+                    <span className="text-sm font-medium text-slate-500">/year</span>
+                  </p>
+                  <p className="mt-1 text-xs text-slate-500">
+                    <span className="line-through">₱{annualBasePrice.toLocaleString()}</span> base price
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
           <button onClick={() => document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' })} className="text-slate-600 hover:text-slate-900">
             FAQ
           </button>
